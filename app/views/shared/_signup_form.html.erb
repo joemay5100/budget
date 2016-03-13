@@ -1,0 +1,32 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "Error") %> prohibited this user from being created</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @user, url: signup_path do |f| %>  
+  <p>
+    <%= f.label :first_name %><br> 
+    <%= f.text_field :first_name, :placeholder => "Joe"  %>
+  </p> 
+  <p>
+  <%= f.label :email %><br> 
+  <%= f.text_field :email, :placeholder => "joe@joe.com"  %> 
+  </p> 
+  <p>
+  <%= f.label :password %><br> 
+  <%= f.password_field :password, :placeholder => "********"  %> 
+  </p> 
+  <p>
+  <%= f.label :password_confirmation %><br> 
+  <%= f.password_field :password_confirmation, :placeholder => "********" %> 
+  </p> 
+  <p>
+  <%= f.submit "Create" %> 
+  </p> 
+<% end %>
