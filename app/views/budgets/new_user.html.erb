@@ -9,7 +9,7 @@
   </div>
 <% end %>
 
-<%= form_for @user, url: create_user_path do |f| %>  
+<%= form_for @user, url: add_user_path do |f| %>  
   <p>
     <%= f.label :first_name %><br> 
     <%= f.text_field :first_name, :placeholder => "Joe"  %>

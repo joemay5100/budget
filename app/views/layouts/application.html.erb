@@ -10,6 +10,11 @@
 
 <ul> 
   <li>Signed in as <%= current_user.email %></li> 
+  <li>Budget name: <%= current_user.budget.name %></li> 
+  <li>Budget ID: <%= current_user.budget.id %></li> 
+  <li><%= link_to "Budget", budget_path %></li> 
+  <li><%= link_to "Users", users_path %></li> 
+  <li><%= link_to "New User", new_user_path %></li> 
   <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
 </ul> 
 

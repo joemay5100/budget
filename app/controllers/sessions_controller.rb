@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to budget_path
     else
       @wrong_credentials = true
-      render 'new'
+      render 'new', :layout => 'frontpage'
     end 
   end
   

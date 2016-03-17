@@ -8,9 +8,14 @@ class UsersController < ApplicationController
   
   def create 
     @user = User.new(user_params) 
+    
+    @new_budget = Budget.new
+    @new_budget.name = "test budget"
+    @user.budget = @new_budget
+    
     if @user.save 
       session[:user_id] = @user.id 
-      redirect_to '/budget' 
+      redirect_to budget_path 
     else 
       render 'new', :layout => 'frontpage'
     end 
