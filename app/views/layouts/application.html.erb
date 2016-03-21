@@ -10,10 +10,15 @@
 
 <ul> 
   <li>Signed in as <%= current_user.email %></li> 
-  <li>Budget name: <%= current_user.budget.name %></li> 
-  <li>Budget ID: <%= current_user.budget.id %></li> 
+  <% if current_user.budget %>
+    <li>Budget name: <%= current_user.budget.name %></li> 
+    <li>Budget ID: <%= current_user.budget.id %></li> 
+  <% else %>
+    <li>No budget attached to user</li>
+  <% end %>
   <li><%= link_to "Budget", budget_path %></li> 
-  <li><%= link_to "Users", users_path %></li> 
+  <li><%= link_to "Details", budget_details_path %></li> 
+  <li><%= link_to "Session History", session_history_path %></li> 
   <li><%= link_to "New User", new_user_path %></li> 
   <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
 </ul> 

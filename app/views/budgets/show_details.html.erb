@@ -1,3 +1,11 @@
+<h1>Budget Details</h1>
+<ul>
+  <li>Signed in as <%= current_user.email %></li> 
+  <li>Budget name: <%= @budget.name %></li> 
+  <li>Budget ID: <%= @budget.id %></li> 
+  <li>Created at: <%= @budget.created_at %></li>
+</ul>
+
 <h1>List of users on this budget</h1>
 <table>
   <tr>

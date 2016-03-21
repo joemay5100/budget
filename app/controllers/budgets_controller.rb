@@ -15,10 +15,14 @@ class BudgetsController < ApplicationController
     end
   end
   
-  def list_users
-    @users = current_user.budget.users
-  end
+  # def list_users
+  #   @users = current_user.budget.users
+  # end
   
+  def show_details
+    @budget = current_user.budget
+    @users = @budget.users
+  end
   
   private
   def user_params

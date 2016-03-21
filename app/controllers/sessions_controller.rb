@@ -1,6 +1,12 @@
 class SessionsController < ApplicationController
   before_action :logout_user, only: [:new]
-
+  
+  def index
+    @user = current_user
+    # needs to change to all users on budget of user, not just this user
+    @sessions = @user.sessions
+  end
+  
   def new
     render :layout => 'frontpage'
   end
@@ -8,7 +14,8 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
-      session[:user_id] = @user.id
+      # session[:user_id] = @user.id
+      login_user(@user)
       redirect_to budget_path
     else
       @wrong_credentials = true

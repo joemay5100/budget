@@ -1,0 +1,15 @@
+<h1>Session history for user <%= @user.email %></h1>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Logged in</th>
+    <th>Logged out</th>
+  </tr>
+  <% @sessions.each do |session| %>
+    <tr>
+      <td><%= session.user.email %></td>
+      <td><%= session.login_at %></td>
+      <td><%= session.logout_at %></td>
+    </tr>
+  <% end %>  
+</table>
