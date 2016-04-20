@@ -7,18 +7,25 @@ class UsersController < ApplicationController
   end
   
   def create 
-    @user = User.new(user_params) 
-    
-    @new_budget = Budget.new
-    @new_budget.name = "test budget"
-    @user.budget = @new_budget
-    
-    if @user.save 
-      session[:user_id] = @user.id 
+    user_info = User.signup(user_params)
+    @user = user_info[0]
+    is_saved = user_info[1]
+
+    if is_saved
+      login_user(@user)
       redirect_to budget_path 
     else 
       render 'new', :layout => 'frontpage'
     end 
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    if User.delete(@user)
+      redirect_to budget_details_path
+    else 
+      redirect_to budget_details_path
+    end
   end
 
   private

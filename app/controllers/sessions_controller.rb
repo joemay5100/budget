@@ -12,9 +12,8 @@ class SessionsController < ApplicationController
   end
   
   def create
-    @user = User.find_by_email(params[:session][:email])
+    @user = User.find_by(email: params[:session][:email], is_deleted: false)
     if @user && @user.authenticate(params[:session][:password])
-      # session[:user_id] = @user.id
       login_user(@user)
       redirect_to budget_path
     else

@@ -5,23 +5,23 @@ class BudgetsController < ApplicationController
   end
   
   def add_user
-    @user = User.new(user_params) 
-    @user.budget = current_user.budget
-    
-    if @user.save 
+    if User.add_to_budget(user_params, current_budget) 
       redirect_to budget_path 
     else 
       render 'new_user'
     end
   end
   
-  # def list_users
-  #   @users = current_user.budget.users
-  # end
-  
   def show_details
-    @budget = current_user.budget
-    @users = @budget.users
+    @budget = current_budget
+    @users = User.where(budget: @budget, is_deleted: false)
+    @deleted_users = User.where(budget: @budget, is_deleted: true)
+  end
+  
+  def delete
+  end
+  
+  def destroy
   end
   
   private

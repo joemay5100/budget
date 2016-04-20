@@ -18,7 +18,24 @@
       <td><%= user.first_name %></td>
       <td><%= user.email %></td>
       <td><%= user.created_at %></td>
+      <td><%= link_to "Delete", delete_user_path(user), method: "delete", 
+              data: { confirm: 'Are you sure?' }  %></td>
     </tr>
   <% end %>  
 </table>
 
+<h1>List of deleted users</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Date Added</th>
+  </tr>
+  <% @deleted_users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.created_at %></td>
+    </tr>
+  <% end %>  
+</table>

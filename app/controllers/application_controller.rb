@@ -9,6 +9,10 @@ def current_user
   @current_user ||= User.find(session[:user_id]) if session[:user_id] 
 end
 
+def current_budget
+  current_user.budget
+end
+
 def require_user 
   redirect_to login_path unless current_user 
 end

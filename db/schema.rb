@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321224824) do
+ActiveRecord::Schema.define(version: 20160419085442) do
 
   create_table "budgets", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20160321224824) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "budget_id"
+    t.boolean  "is_deleted"
   end
 
   add_index "users", ["budget_id"], name: "index_Users_on_budget_id"
